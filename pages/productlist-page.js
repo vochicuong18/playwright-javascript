@@ -4,21 +4,22 @@ export default class ProductListPage {
      */
     constructor(page) {
         this.page = page
-
-        this.productItem = (productSeo) => {
+        this.productItem = (url) => {
             const itemLocator = page.locator(
-                `//div[@class='product details product-item-details']//a[contains(@href, '${productSeo}')]//ancestor::div[@class='product-item-info']`
+                `//div[@class='product details product-item-details']//a[contains(@href, '${url}')]//ancestor::div[@class='product-item-info']`
             )
             this.addToCart = itemLocator.locator(
                 "//button[@class='action tocart primary']"
             )
-            return itemLocator // Trả về itemLocator như trước
+            return itemLocator
         }
+        this.successMessage = page.locator(`div.page.messages div.success`)
     }
 
-    async addProductToCart(productSeo) {
+    async addProductToCart(Product) {
         await this.page.waitForLoadState()
-        await this.productItem(productSeo).hover()
+        await this.productItem(Product.url).hover()
         await this.addToCart.click()
+        await this.successMessage.waitFor({ state: 'attached' })
     }
 }

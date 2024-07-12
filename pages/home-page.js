@@ -16,11 +16,13 @@ export default class HomePage {
         this.subCategory = (subName) => {
             return page.locator(`//span[text()='${subName}']`)
         }
+        this.cartIcon = page.locator(`a.showcart`)
+        this.viewShoppingCart = page.locator(`a.action.viewcart`)
     }
-    async goToProductListPage(categoryName, subName) {
+    async goToProductListPage(Product) {
         await this.page.waitForLoadState()
-        await this.category(categoryName).hover()
-        await this.subCategory(subName).click()
+        await this.category(Product.category).hover()
+        await this.subCategory(Product.subCategory).click()
     }
 
     async goToHomePage() {
@@ -33,5 +35,10 @@ export default class HomePage {
 
     async goToLoginPage() {
         await this.signIn.click()
+    }
+
+    async goToShoppingCart(){
+        await this.cartIcon.click()
+        await this.viewShoppingCart.click()
     }
 }

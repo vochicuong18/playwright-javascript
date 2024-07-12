@@ -1,0 +1,9 @@
+{
+    "simpleProduct": {
+        "name": "Auto Simple",
+        "price": 100000,
+        "url": "/autosimple.html",
+        "category": "Outlets",
+        "subCategory": "Auto Outlets"
+    }
+}

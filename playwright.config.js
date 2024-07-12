@@ -1,6 +1,6 @@
 // @ts-check
-const { defineConfig, devices } = require('@playwright/test')
-module.exports = defineConfig({
+import { defineConfig, devices } from '@playwright/test'
+export default defineConfig({
     testDir: './tests',
     /* Run tests in files in parallel */
     fullyParallel: false,
@@ -12,7 +12,7 @@ module.exports = defineConfig({
         /* Screenshot on failure. */
         screenshot: 'only-on-failure',
         launchOptions: {
-            slowMo: 500,
+            slowMo: 3000,
         },
         video: {
             mode: 'on',

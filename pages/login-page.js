@@ -10,9 +10,9 @@ export default class LoginPage {
         )
     }
 
-    async login(username, pass) {
-        await this.email.fill(username)
-        await this.password.fill(pass)
+    async login(User) {
+        await this.email.fill(User.email)
+        await this.password.fill(User.password)
         await this.submit.click()
     }
 }
