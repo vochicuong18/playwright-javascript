@@ -4,7 +4,6 @@ export default class HomePage {
      */
     constructor(page) {
         this.page = page
-        this.signIn = page.locator("div.header a[href*='login']")
         this.acceptAllCookie = page.locator(
             'button.amgdprcookie-button.-allow.-save'
         )
@@ -31,10 +30,6 @@ export default class HomePage {
 
     async acceptCookie() {
         await this.acceptAllCookie.click()
-    }
-
-    async goToLoginPage() {
-        await this.signIn.click()
     }
 
     async goToShoppingCart(){
