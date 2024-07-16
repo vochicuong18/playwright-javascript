@@ -4,14 +4,10 @@ export default class CheckoutPage {
      */
     constructor(page) {
         this.page = page
-        this.checkoutButton = page.locator(
-            "button.checkout.amasty[title='Place Order']"
-        )
+        this.checkoutButton = page.locator("button.checkout.amasty[title='Place Order']")
         this.loadingMask = page.locator('#checkout-loader')
         this.bodyLoadingMask = page.locator("//body/div[@class='loading-mask']")
-        this.acceptPolicyCheckbox = page.locator(
-            '._active .payment-method-content .checkout-agreements-block label'
-        )
+        this.acceptPolicyCheckbox = page.locator('._active .payment-method-content .checkout-agreements-block label')
         this.shippingMethod = (shippingMethod) => {
             return page.locator(`//tr[td[text()='${shippingMethod}']]`)
         }
@@ -31,7 +27,7 @@ export default class CheckoutPage {
         await this.bodyLoadingMask.waitFor({ state: 'hidden' })
     }
 
-    async checkout(){
+    async checkout() {
         await this.acceptPolicyCheckbox.click()
         await this.checkoutButton.highlight()
     }

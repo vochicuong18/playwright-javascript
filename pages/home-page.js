@@ -4,13 +4,9 @@ export default class HomePage {
      */
     constructor(page) {
         this.page = page
-        this.acceptAllCookie = page.locator(
-            'button.amgdprcookie-button.-allow.-save'
-        )
+        this.acceptAllCookie = page.locator('button.amgdprcookie-button.-allow.-save')
         this.category = (categoryName) => {
-            return page.locator(
-                `//span[text()='${categoryName}']//ancestor::li`
-            )
+            return page.locator(`//span[text()='${categoryName}']//ancestor::li`)
         }
         this.subCategory = (subName) => {
             return page.locator(`//span[text()='${subName}']`)
@@ -30,10 +26,5 @@ export default class HomePage {
 
     async acceptCookie() {
         await this.acceptAllCookie.click()
-    }
-
-    async goToShoppingCart(){
-        await this.cartIcon.click()
-        await this.viewShoppingCart.click()
     }
 }

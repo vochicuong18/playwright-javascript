@@ -11,9 +11,7 @@ export default defineConfig({
         headless: false,
         /* Screenshot on failure. */
         screenshot: 'only-on-failure',
-        launchOptions: {
-            slowMo: 3000,
-        },
+        
         video: {
             mode: 'on',
             size: { width: 1920, height: 1080 },

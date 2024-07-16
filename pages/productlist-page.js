@@ -8,9 +8,7 @@ export default class ProductListPage {
             const itemLocator = page.locator(
                 `//div[@class='product details product-item-details']//a[contains(@href, '${url}')]//ancestor::div[@class='product-item-info']`
             )
-            this.addToCart = itemLocator.locator(
-                "//button[@class='action tocart primary']"
-            )
+            this.addToCart = itemLocator.locator("//button[@class='action tocart primary']")
             return itemLocator
         }
         this.successMessage = page.locator(`div.page.messages div.success`)

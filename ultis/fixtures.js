@@ -22,11 +22,11 @@ export const test = base.test.extend({
     checkoutPage: async ({ page }, use) => {
         await use(new CheckoutPage(page))
     },
-    myAccountPage: async ({page}, use) => {
-      await use(new MyAccountPage(page))
+    myAccountPage: async ({ page }, use) => {
+        await use(new MyAccountPage(page))
     },
-    headerPage: async ({page}, use) => {
-      await use(new HeaderPage(page))
-    }
+    headerPage: async ({ page }, use) => {
+        await use(new HeaderPage(page))
+    },
 })
-export {expect}
+export { expect }
