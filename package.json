@@ -2,7 +2,9 @@
     "name": "jsdemo",
     "version": "1.0.0",
     "main": "index.js",
-    "scripts": {},
+    "scripts": {
+        "test": "npx playwright test; npx allure serve allure-results"
+    },
     "keywords": [],
     "author": "Vo Chi Cuong",
     "license": "ISC",
@@ -10,14 +12,15 @@
     "type": "module",
     "devDependencies": {
         "@playwright/test": "^1.45.1",
-        "@types/node": "^20.14.9"
+        "@types/node": "^20.14.9",
+        "allure-playwright": "^3.0.0-beta.6"
     },
     "prettier": {
         "trailingComma": "es5",
         "tabWidth": 4,
         "semi": false,
         "singleQuote": true,
-        "printWidth": 160,
+        "printWidth": 200,
         "proseWrap": "never"
     }
 }

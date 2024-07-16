@@ -10,10 +10,6 @@ export default class HeaderPage {
         this.viewShoppingCart = page.locator(`a.action.viewcart`)
         this.count = page.locator(`div.header span.counter.qty`)
     }
-    async goToLoginPage() {
-        await this.signIn.click()
-    }
-
     async goToShoppingCart(){
         await this.cartIcon.click()
         await this.viewShoppingCart.click()

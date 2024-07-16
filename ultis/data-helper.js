@@ -2,8 +2,7 @@ import { readFileSync } from 'fs'
 import Product from '../entities/product.js'
 import User from '../entities/user.js'
 
-let product
-let user
+let product, user
 
 const loadProduct = (productType) => {
     const data = readFileSync('data/products.json', 'utf8')

@@ -5,13 +5,13 @@ export default defineConfig({
     /* Run tests in files in parallel */
     fullyParallel: false,
     /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-    reporter: 'html',
+    reporter: 'allure-playwright',
     /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
     use: {
-        headless: false,
+        headless: true,
         /* Screenshot on failure. */
         screenshot: 'only-on-failure',
-        
+
         video: {
             mode: 'on',
             size: { width: 1920, height: 1080 },
@@ -36,10 +36,17 @@ export default defineConfig({
             },
         },
 
-        // {
-        //   name: "firefox",
-        //   use: { ...devices["Desktop Firefox"] },
-        // },
+        {
+            name: 'firefox',
+            use: {
+                ...devices['Desktop Firefox'],
+                viewport: null,
+                deviceScaleFactor: undefined,
+                launchOptions: {
+                    args: ['--start-maximized'],
+                },
+            },
+        },
 
         // {
         //   name: "webkit",

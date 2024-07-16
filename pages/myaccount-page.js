@@ -1,5 +1,5 @@
 export default class MyAccountPage {
-        /**
+    /**
      * @param {import('@playwright/test').Page} page
      */
     constructor(page) {
