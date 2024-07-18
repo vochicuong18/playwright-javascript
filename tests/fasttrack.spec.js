@@ -1,5 +1,6 @@
-import { test, expect } from '../ultis/fixtures.js'
-import { user } from '../ultis/data-helper.js'
+import {test, expect} from '../ultis/fixtures.js'
+import {user} from '../ultis/data-helper.js'
+console.log(user)
 const invalidEmails = ['Cuong', 'abc', 'abc@example', 'abc@example.c']
 const errorMessage = {
     invalidEmail: `Please enter a valid email address (Ex: johndoe@domain.com).`,
@@ -7,14 +8,14 @@ const errorMessage = {
     requiredField: `This is a required field.`,
 }
 test.describe('Check login', () => {
-    test.beforeEach(async ({ homePage }) => {
+    test.beforeEach(async ({homePage}) => {
         await homePage.goToHomePage()
         await homePage.acceptCookie()
         await homePage.goToLoginPage()
     })
 
     invalidEmails.forEach((invalidEmail) => {
-        test(`Check invalid email: ${invalidEmail}`, async ({ loginPage }) => {
+        test(`Check invalid email: ${invalidEmail}`, async ({loginPage}) => {
             await loginPage.fillUserName(invalidEmail)
             await loginPage.fillPassword(user.password)
             await loginPage.clickSubmit()
@@ -22,40 +23,40 @@ test.describe('Check login', () => {
         })
     })
 
-    test('Check invalid password', async ({ loginPage }) => {
+    test('Check invalid password', async ({loginPage}) => {
         await loginPage.fillUserName(user.email)
         await loginPage.fillPassword('Cuong')
         await loginPage.clickSubmit()
         await expect.soft(loginPage.errorMessage).toHaveText(errorMessage.loginError)
     })
-    test('Check empty data', async ({ loginPage }) => {
+    test('Check empty data', async ({loginPage}) => {
         await loginPage.clickSubmit()
         await expect.soft(loginPage.emailErrorMessage).toHaveText(errorMessage.requiredField)
         await expect.soft(loginPage.passErrorMessage).toHaveText(errorMessage.requiredField)
     })
 
-    test('Check empty email', async ({ loginPage }) => {
+    test('Check empty email', async ({loginPage}) => {
         await loginPage.fillPassword(user.password)
         await loginPage.clickSubmit()
         await expect.soft(loginPage.emailErrorMessage).toHaveText(errorMessage.requiredField)
         await expect.soft(loginPage.passErrorMessage).not.toBeAttached()
     })
 
-    test('Check empty password', async ({ loginPage }) => {
+    test('Check empty password', async ({loginPage}) => {
         await loginPage.fillUserName(user.email)
         await loginPage.clickSubmit()
         await expect.soft(loginPage.emailErrorMessage).not.toBeAttached()
         await expect.soft(loginPage.passErrorMessage).toHaveText(errorMessage.requiredField)
     })
 
-    test('Check login success', async ({ loginPage, myAccountPage }) => {
+    test('Check login success', async ({loginPage, myAccountPage}) => {
         await loginPage.fillUserName(user.email)
         await loginPage.fillPassword(user.password)
         await loginPage.clickSubmit()
         await expect.soft(myAccountPage.email, 'Check customer email logged in successfully').toContainText(user.email)
     })
 
-    test('Check login with case-sensitive email', async ({ loginPage, myAccountPage }) => {
+    test('Check login with case-sensitive email', async ({loginPage, myAccountPage}) => {
         await loginPage.fillUserName(user.email.toUpperCase())
         await loginPage.fillPassword(user.password)
         await loginPage.clickSubmit()
