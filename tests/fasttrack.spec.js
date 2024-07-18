@@ -3,7 +3,7 @@ import { user } from '../ultis/data-helper.js'
 const invalidEmails = ['Cuong', 'abc', 'abc@example', 'abc@example.c']
 const errorMessage = {
     invalidEmail: `Please enter a valid email address (Ex: johndoe@domain.com).`,
-    loginError: `The account sign-in was incorrect or your account is disabled temporarily. Please wait and try again later1.`,
+    loginError: `The account sign-in was incorrect or your account is disabled temporarily. Please wait and try again later.`,
     requiredField: `This is a required field.`,
 }
 test.describe('Check login', () => {
@@ -56,7 +56,7 @@ test.describe('Check login', () => {
     })
 
     test('Check login with case-sensitive email', async ({ loginPage, myAccountPage }) => {
-        await loginPage.fillUserName(user.email.toUpperCase()) // Chuyển email thành chữ hoa
+        await loginPage.fillUserName(user.email.toUpperCase())
         await loginPage.fillPassword(user.password)
         await loginPage.clickSubmit()
         await expect.soft(myAccountPage.email, 'Check customer email logged in successfully').toContainText(user.email)
